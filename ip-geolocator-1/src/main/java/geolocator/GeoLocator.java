@@ -1,18 +1,15 @@
 package geolocator;
 
-import java.net.URL;
-
-import java.io.IOException;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.google.common.net.UrlEscapers;
-
 import org.apache.commons.io.IOUtils;
 
+import java.io.IOException;
+import java.net.URL;
+
 /**
- * Class for obtaining geolocation information of an IP address. The class uses
+ * Class for obtaining geolocation information of Ean IP address. The class uses
  * the <a href="http://ip-api.com/">IP-API.com</a> service.
  */
 public class GeoLocator {
@@ -57,7 +54,8 @@ public class GeoLocator {
             url = new URL(GEOLOCATOR_SERVICE_URI);
         }
         String s = IOUtils.toString(url, "UTF-8");
-        return OBJECT_MAPPER.readValue(s, GeoLocation.class);
+        GeoLocation geoLocation = OBJECT_MAPPER.readValue(s, GeoLocation.class);
+        return geoLocation;
     }
 
     // CHECKSTYLE:OFF
